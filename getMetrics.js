@@ -1,4 +1,6 @@
-function getMetrics(elementBase) {
+function GooglePageSpeedScrapper() {}
+
+GooglePageSpeedScrapper.prototype.getMetrics = function(elementBase) {
     const fcp = elementBase.getElementsByClassName("lh-metric__value")[8].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
     const si  = elementBase.getElementsByClassName("lh-metric__value")[9].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
     const lcp = elementBase.getElementsByClassName("lh-metric__value")[10].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
@@ -8,10 +10,15 @@ function getMetrics(elementBase) {
     const page_speed = elementBase.getElementsByClassName("lh-gauge__percentage")[0].textContent;
     return (fcp+" "+si+" "+lcp+" "+tti+" "+tbt+" "+cls+" "+page_speed);
 }
-function logMobileAndResidentialMetrics() {
+
+GooglePageSpeedScrapper.prototype.showMobileMetrics = function() {
     const elementBase = document.getElementsByClassName("goog-control result lh-vars lh-root");
     console.log("Mobile:");
-    console.log(getMetrics(elementBase[0]));
-    console.log("Residential:");
-    console.log(getMetrics(elementBase[1]));
+    console.log(this.getMetrics(elementBase[0]));
+}
+
+GooglePageSpeedScrapper.prototype.showDesktopMetrics = function() {
+    const elementBase = document.getElementsByClassName("goog-control result lh-vars lh-root");
+    console.log("Destop:");
+    console.log(this.getMetrics(elementBase[1]));
 }

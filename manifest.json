@@ -1,26 +1,17 @@
 {
-    "manifest_version": 2,
+    "manifest_version": 3,
     "name": "Page-speed Metrics Tool",
     "description": "Tool to get main page-speed metrics",
     "version": "0.1",
     "background": {
-        "scripts": ["background.js"],
-        "persistent": false
+        "service_worker": "background.js"
     },
     "permissions": [
-        "activeTab"
+        "storage",
+        "activeTab",
+        "scripting"
     ],
-    "browser_action": {
-        "default_title": "Metrics Tool"
-    },
-    "content_scripts": [
-        {
-            "matches": [
-            "<all_urls>"
-            ],
-            "js": [
-            "getMetrics.js"
-            ]
-        }
-    ]
+    "action": {
+        "default_popup": "popup.html"
+    }
 }
