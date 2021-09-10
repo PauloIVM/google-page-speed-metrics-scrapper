@@ -27,12 +27,14 @@ const copyLabMetrics = function() {
         // the scrapper will crash. This is because sometimes google displays a page
         // with a different layout, but I was unable to reproduce that page
 
-        const fcp = element[8].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
-        const si  = element[9].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
-        const lcp = element[10].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
-        const tti = element[11].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
-        const tbt = element[12].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
-        const cls = element[13].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
+        const offset = 0;
+
+        const fcp = element[8+offset].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
+        const si  = element[9+offset].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
+        const lcp = element[10+offset].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
+        const tti = element[11+offset].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
+        const tbt = element[12+offset].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
+        const cls = element[13+offset].textContent.match(/([0-9]*,[0-9]*)|([0-9]*)/i)[0];
         const page_speed = elementBase.getElementsByClassName("lh-gauge__percentage")[0].textContent;
         return (fcp+" "+si+" "+lcp+" "+tti+" "+tbt+" "+cls+" "+page_speed);
     }
